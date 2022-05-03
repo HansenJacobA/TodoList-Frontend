@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import PropTypes from 'prop-types';
+
+const axios = require('axios');
 
 class Input extends Component {
   constructor(props) {
@@ -19,13 +21,13 @@ class Input extends Component {
 
   addTodo() {
     const { action } = this.state;
+    const { getTodos } = this.props;
     const task = { action };
     if (task.action && task.action.length > 0) {
-      axios
-        .post('/api/todos', task)
+      axios.post('/api/todos/', task)
         .then((res) => {
           if (res.data) {
-            this.getTodos();
+            getTodos();
             this.setState({ action: '' });
           }
         })
@@ -47,3 +49,7 @@ class Input extends Component {
 }
 
 export default Input;
+
+Input.propTypes = {
+  getTodos: PropTypes.func.isRequired,
+};

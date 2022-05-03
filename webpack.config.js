@@ -7,7 +7,7 @@ module.exports = {
   },
   output: {
     filename: '[name].bundle.js',
-    path: path.resolve(__dirname, '/client/dist'),
+    path: path.resolve(__dirname, './client/dist'),
     clean: true,
   },
   module: {

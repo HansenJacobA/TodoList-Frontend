@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import Input from './Input';
 import ListTodo from './ListTodo';
 
-// NEED TO MAKE ALL THESE API CALLS FROM A CLIENT SERVER
+const axios = require('axios');
 
 class Todo extends Component {
   constructor(props) {
@@ -20,8 +19,7 @@ class Todo extends Component {
   }
 
   getTodos() {
-    axios
-      .get('/api/todos')
+    axios.get('/api/todos')
       .then((res) => {
         if (res.data) {
           this.setState({
@@ -33,8 +31,7 @@ class Todo extends Component {
   }
 
   deleteTodo(id) {
-    axios
-      .delete(`/api/todos/${id}`)
+    axios.delete(`/api/todos/${id}`)
       .then((res) => {
         if (res.data) {
           this.getTodos();
